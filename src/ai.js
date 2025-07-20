@@ -7,6 +7,7 @@ export async function getRecipeFromAI(ingredients) {
         body: JSON.stringify({ ingredients })
     });
 
+    console.log(process.env.REACT_APP_API_URL);
     const result = await response.json();
     if (result.generated_text) {
         return result.generated_text;
