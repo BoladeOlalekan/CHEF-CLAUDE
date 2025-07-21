@@ -5,7 +5,7 @@ export default function header(){
         <>
             <header>
                 <img src={Chef} alt="chef logo" />
-                <h1>Chef Claude</h1>
+                <h1>Chef Bolex</h1>
             </header>
         </>
     )
