@@ -1,5 +1,5 @@
 export async function getRecipeFromAI(ingredients) {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/generate-recipe`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/generate-recipe`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -7,7 +7,7 @@ export async function getRecipeFromAI(ingredients) {
         body: JSON.stringify({ ingredients })
     });
 
-    console.log(process.env.REACT_APP_API_URL);
+    console.log(import.meta.env.VITE_API_URL);
     const result = await response.json();
     if (result.generated_text) {
         return result.generated_text;
