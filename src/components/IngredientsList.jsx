@@ -12,7 +12,7 @@ export function IngredientsList(props){
                 </>
             )}
 
-            {props.ingredientList.length > 3 && (
+            {props.ingredientList.length > 2 && (
                 <div className="getRecipeContainer">
                     <div>
                         <h3>Ready for a recipe?</h3>

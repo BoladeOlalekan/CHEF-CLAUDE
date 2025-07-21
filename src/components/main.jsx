@@ -1,13 +1,14 @@
 import React from "react"
-import {ClaudeRecipe} from "./ClaudeRecipe"
-import {IngredientsList} from "./IngredientsList"
+import { ClaudeRecipe } from "./ClaudeRecipe"
+import { IngredientsList } from "./IngredientsList"
 import { getRecipeFromAI } from "../ai"
 
-export default function Main(){
+export default function Main() {
 
     const [ingredientList, setIngredientList] = React.useState([])
     const [recipeText, setRecipeText] = React.useState("")
     const [recipeShown, setRecipeShown] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
 
     //ADD INGREDIENT
     function addIngredient(formData) {
@@ -16,31 +17,40 @@ export default function Main(){
         if (newIngredient) {
             setIngredientList(prevList => [...prevList, newIngredient]);
         }
-    }   
-    
+    }
+
     //FLIP GET RECIPE STATE
-    async function getRecipe(){
+    async function getRecipe() {
+        setLoading(true);
         const recipe = await getRecipeFromAI(ingredientList);
         setRecipeText(recipe);
         setRecipeShown(prevState => !prevState);
+        setLoading(false);
     }
 
-    return(
+    return (
         <>
             <main>
                 <form action={addIngredient} className="ingredient-form">
-                    <input type="text" name="ingredient" id="ingredient" placeholder="e.g Pepper"/>
+                    <input type="text" name="ingredient" id="ingredient" placeholder="e.g Pepper" />
                     <button>+ Add Ingredient</button>
                 </form>
 
                 <IngredientsList
-                    ingredientList = {ingredientList}
-                    getRecipe = {getRecipe}
+                    ingredientList={ingredientList}
+                    getRecipe={getRecipe}
                 />
 
-                {recipeShown && <ClaudeRecipe
-                    recipeText = {recipeText}
-                />}
+                {loading ? (
+                    <div className="overlay">
+                        <div className="loader-container">
+                            <div className="spinner"></div>
+                            <p>🍳 Cooking up something delicious...</p>
+                        </div>
+                    </div>
+                ) : (
+                    recipeShown && <ClaudeRecipe recipeText={recipeText} />
+                )}
             </main>
         </>
     )
