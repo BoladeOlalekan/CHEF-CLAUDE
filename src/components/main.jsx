@@ -21,6 +21,7 @@ export default function Main() {
 
     //FLIP GET RECIPE STATE
     async function getRecipe() {
+        console.log("API URL:", import.meta.env.VITE_API_URL);
         setLoading(true);
         const recipe = await getRecipeFromAI(ingredientList);
         setRecipeText(recipe);
