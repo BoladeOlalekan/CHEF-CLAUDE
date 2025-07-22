@@ -7,7 +7,7 @@ export function IngredientsList(props){
         <section className="ingredient-sect">
             {props.ingredientList.length > 0 && (
                 <>
-                    <h2>Ingredients on hand <span>(At least 4 ingredients.)</span></h2>
+                    <h2>Ingredients on hand <span>(At least 3 ingredients.)</span></h2>
                     <ul className="ingredients-list">{ingredientsListItems}</ul>
                 </>
             )}

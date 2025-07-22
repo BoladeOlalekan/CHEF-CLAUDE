@@ -4,7 +4,7 @@ import Markdown from 'react-markdown'
 export function ClaudeRecipe(props){
     return (
         <section className="recipeDetails">
-            <h2>Chef Claude Recommends:</h2>
+            <h2>Chef Bolex Recommends:</h2>
             <Markdown>{props.recipeText}</Markdown>
         </section>
     )

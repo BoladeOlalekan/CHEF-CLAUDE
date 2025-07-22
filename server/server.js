@@ -18,11 +18,11 @@ app.post("/api/generate-recipe", async (req, res) => {
         return res.status(400).json({ error: "Invalid ingredients format" });
     }
 
-    const prompt = `You are a culinary assistant. Given the following list of ingredients: ${ingredients.join(", ")}. Generate at least 2 well-structured and complete recipe.
+    const prompt = `You are a culinary assistant. Given the following list of ingredients: ${ingredients.join(", ")}. Generate at least 3 well-structured and complete recipe.
         You can start by saying "Based on the ingredients you have, i would recommend" then the names of the recipes generated.
-        Also, when giving the recipe, you do not need to include "Recipe 1 or Recipe 2 or even just Recipe", just the name of the recipe.
+        Also, when giving the name of the recipe, you do not need to include "Recipe 1 or Recipe 2 or even just Recipe", just the name of the recipe.
         The recipe should include:
-        1. A suitable title based on the main ingredients.
+        1. A suitable title based on the main ingredients in an h2 markdown.
         2. Recommended **measurements** for each ingredient.
         3. A full **ingredients list** including quantities and any common additions (e.g. water, oil, salt).
         4. A clear, step-by-step **cooking process**, written with care and precision.
