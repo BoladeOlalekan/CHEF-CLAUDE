@@ -19,19 +19,18 @@ app.post("/api/generate-recipe", async (req, res) => {
     }
 
     const prompt = `You are a culinary assistant. Given the following list of ingredients: ${ingredients.join(", ")}. Generate at least 3 well-structured and complete recipe.
-        You can start by saying "Based on the ingredients you have, i would recommend" then the names of the recipes generated.
-        Also, when giving the name of the recipe, you do not need to include "Recipe 1 or Recipe 2 or even just Recipe", just the name of the recipe.
-        The recipe should include:
-        1. A suitable title based on the main ingredients in an h2 markdown.
-        2. Recommended **measurements** for each ingredient.
-        3. A full **ingredients list** including quantities and any common additions (e.g. water, oil, salt).
-        4. A clear, step-by-step **cooking process**, written with care and precision.
-        5. Estimated **prep time**, **cook time**, and **servings**.
-        6. Optionally, include serving suggestions or pairing ideas.
+    You can start by saying "Based on the ingredients you have, i would recommend" then the names of the recipes generated.
+    Also, when giving the name of the recipe, you do not need to include "Recipe 1 or Recipe 2 or even just Recipe", just the name of the recipe.
+    The recipe should include:
+    1. A suitable title based on the main ingredients in an h2 markdown.
+    2. Recommended **measurements** for each ingredient.
+    3. A full **ingredients list** including quantities and any common additions (e.g. water, oil, salt).
+    4. A clear, step-by-step **cooking process**, written with care and precision.
+    5. Estimated **prep time**, **cook time**, and **servings**.
+    6. Optionally, include serving suggestions or pairing ideas.
 
-        Ensure to format your response in markdown and at the end of each full recipe, add a markdown horizontal line (`---`) to separate them clearly.
-        Make sure this line is rendered properly in markdown format and not skipped.
-    `;
+    Ensure to format your response in markdown and at the end of each full recipe, add a markdown horizontal line to separate them clearly.
+    Make sure this line is rendered properly in markdown format and not skipped.`;
 
     console.log("Prompt:", prompt);
 
