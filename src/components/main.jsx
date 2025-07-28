@@ -5,10 +5,14 @@ import { getRecipeFromAI } from "../ai"
 
 export default function Main() {
 
-    const [ingredientList, setIngredientList] = React.useState([])
+    const [ingredientList, setIngredientList] = React.useState(
+        ["chicken", "all the main spices", "corn", "heavy cream", "pasta"]
+    )
     const [recipeText, setRecipeText] = React.useState("")
     const [recipeShown, setRecipeShown] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
+
+    const recipeSection = React.useRef(null)
 
     //ADD INGREDIENT
     function addIngredient(formData) {
@@ -29,6 +33,12 @@ export default function Main() {
         setLoading(false);
     }
 
+    React.useEffect(() => {
+        if(recipeText !== '' && recipeSection.current !== null){
+            recipeSection.current.scrollIntoView({behavior: "smooth"});
+        }
+    },[recipeText])
+
     return (
         <>
             <main>
@@ -40,6 +50,7 @@ export default function Main() {
                 <IngredientsList
                     ingredientList={ingredientList}
                     getRecipe={getRecipe}
+                    ref={recipeSection}
                 />
 
                 {loading ? (
