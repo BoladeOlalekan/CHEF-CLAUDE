@@ -28,7 +28,9 @@ app.post("/api/generate-recipe", async (req, res) => {
         4. A clear, step-by-step **cooking process**, written with care and precision.
         5. Estimated **prep time**, **cook time**, and **servings**.
         6. Optionally, include serving suggestions or pairing ideas.
-        Ensure to format your response in markdown.
+
+        Ensure to format your response in markdown and at the end of each full recipe, add a markdown horizontal line (`---`) to separate them clearly.
+        Make sure this line is rendered properly in markdown format and not skipped.
     `;
 
     console.log("Prompt:", prompt);
